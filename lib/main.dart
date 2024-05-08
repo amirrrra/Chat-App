@@ -1,3 +1,5 @@
+import 'package:chat_app/utils/constants.dart';
+import 'package:chat_app/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +11,16 @@ class ChatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      theme: ThemeData(
+          fontFamily: 'Gilroy-Medium',
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+              color: black,
+            ),
+          )),
+      debugShowCheckedModeBanner: false,
+      home: const LoginView(),
+    );
   }
 }
