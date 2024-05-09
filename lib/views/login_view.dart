@@ -8,6 +8,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const sizedBox_12 = SizedBox(height: 12);
     return Scaffold(
       backgroundColor: babyYellow,
       body: ListView(
@@ -43,9 +44,7 @@ class LoginView extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
+          sizedBox_12,
           const TextFieldWidget(
             hintText: 'Email',
           ),
@@ -55,11 +54,31 @@ class LoginView extends StatelessWidget {
           const TextFieldWidget(
             hintText: 'Password',
           ),
-          const SizedBox(
-            height: 12,
-          ),
+          sizedBox_12,
           const ButtonWidget(
             text: 'Login',
+          ),
+          sizedBox_12,
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Don't have an account? ",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              GestureDetector(
+                onTap: (){},
+                child: const Text(
+                  "Sign Up",
+                  style: TextStyle(
+                    color: blue,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
