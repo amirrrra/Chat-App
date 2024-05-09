@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
 
+  static const String loginRoute = 'Login View';
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -14,6 +16,7 @@ class SignupView extends StatelessWidget {
         buttonText: 'Signup',
         suggestionText: 'Log In',
         questionText: "Already have an account? ",
+        routeName: loginRoute,
       ),
     );
   }

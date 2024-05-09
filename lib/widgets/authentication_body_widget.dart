@@ -8,6 +8,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
   final String buttonText;
   final String suggestionText;
   final String questionText;
+  final String routeName;
 
   const AuthenticationBodyWidget({
     super.key,
@@ -15,6 +16,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
     required this.buttonText,
     required this.suggestionText,
     required this.questionText,
+    required this.routeName,
   });
 
   @override
@@ -72,15 +74,20 @@ class AuthenticationBodyWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             Text(
+            Text(
               questionText,
               style: const TextStyle(
                 fontSize: 16,
               ),
             ),
             GestureDetector(
-              onTap: () {},
-              child:  Text(
+              onTap: () {
+                Navigator.pushReplacementNamed(
+                  context,
+                  routeName,
+                );
+              },
+              child: Text(
                 suggestionText,
                 style: const TextStyle(
                   color: blue,
