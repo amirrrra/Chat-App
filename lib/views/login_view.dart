@@ -1,4 +1,5 @@
 import 'package:chat_app/utils/constants.dart';
+import 'package:chat_app/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -40,6 +41,18 @@ class LoginView extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
             ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          const TextFieldWidget(
+            hintText: 'Email',
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          const TextFieldWidget(
+            hintText: 'Password',
           ),
         ],
       ),
