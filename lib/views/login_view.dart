@@ -1,4 +1,5 @@
 import 'package:chat_app/utils/constants.dart';
+import 'package:chat_app/widgets/button_widget.dart';
 import 'package:chat_app/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,12 @@ class LoginView extends StatelessWidget {
           ),
           const TextFieldWidget(
             hintText: 'Password',
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          const ButtonWidget(
+            text: 'Login',
           ),
         ],
       ),
