@@ -42,7 +42,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
             height: 100,
           ),
           Image.asset(
-            'assets/images/online_chat.png',
+            logo,
             width: 88,
             height: 88,
           ),
