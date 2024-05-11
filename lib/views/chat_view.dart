@@ -1,5 +1,6 @@
 import 'package:chat_app/utils/constants.dart';
 import 'package:chat_app/widgets/app_bar_widget.dart';
+import 'package:chat_app/widgets/chat_bubble_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
@@ -11,6 +12,7 @@ class ChatView extends StatelessWidget {
     return const Scaffold(
       appBar: AppBarWidget(),
       backgroundColor: babyPink,
+      body: ChatBubbleWidget(),
     );
   }
 }
