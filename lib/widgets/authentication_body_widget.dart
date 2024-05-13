@@ -1,6 +1,6 @@
 import 'package:chat_app/utils/constants.dart';
-import 'package:chat_app/widgets/button_widget.dart';
-import 'package:chat_app/widgets/text_field_widget.dart';
+import 'package:chat_app/widgets/authentication_button_widget.dart';
+import 'package:chat_app/widgets/authentication_text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationBodyWidget extends StatelessWidget {
@@ -51,9 +51,10 @@ class AuthenticationBodyWidget extends StatelessWidget {
           ),
           const Center(
             child: Text(
-              'Online Chatting',
+              'Chitchat',
               style: TextStyle(
                 fontSize: 28,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -67,19 +68,19 @@ class AuthenticationBodyWidget extends StatelessWidget {
             ),
           ),
           sizedBox_12,
-          TextFieldWidget(
+          AuthenticationTextFieldWidget(
             hintText: 'Email',
             onChanged: onChangedEmail,
           ),
           const SizedBox(
             height: 8,
           ),
-          TextFieldWidget(
+          AuthenticationTextFieldWidget(
             hintText: 'Password',
             onChanged: onChangedPassword,
           ),
           sizedBox_12,
-          ButtonWidget(
+          AuthenticationButtonWidget(
             text: buttonText,
             onPressed: onPressed,
           ),
@@ -103,7 +104,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
                 child: Text(
                   suggestionText,
                   style: const TextStyle(
-                    color: blue,
+                    color: kSecondryColor,
                     fontSize: 16,
                   ),
                 ),

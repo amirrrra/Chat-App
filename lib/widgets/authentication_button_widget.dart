@@ -1,11 +1,11 @@
 import 'package:chat_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
+class AuthenticationButtonWidget extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
 
-  const ButtonWidget({
+  const AuthenticationButtonWidget({
     super.key,
     required this.text,
     this.onPressed,
@@ -15,7 +15,7 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: black,
+          backgroundColor: kSecondryColor,
           fixedSize: const Size(double.infinity, 48),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(

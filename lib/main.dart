@@ -21,21 +21,25 @@ class ChatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var defaultTextTheme = Theme.of(context).textTheme;
+
     return MaterialApp(
-      theme: ThemeData(
-          fontFamily: 'Gilroy-Medium',
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(
-              color: black,
-            ),
-          )),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: kPrimaryColor,
+        fontFamily: 'Gilroy-Medium',
+        textTheme: defaultTextTheme.apply(
+          bodyColor: white,
+          displayColor: white,
+        ),
+      ),
       routes: {
         LoginView.signupRoute: (context) => const SignupView(),
         SignupView.loginRoute: (context) => const LoginView(),
         ChatView.chatRoute: (context) => const ChatView(),
       },
       home: const LoginView(),
+      // home: const ChatView(),
     );
   }
 }

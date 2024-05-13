@@ -1,28 +1,23 @@
 import 'package:chat_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: babyYellow,
+      backgroundColor: kPrimaryColor,
       automaticallyImplyLeading: false,
-      centerTitle: true,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            logo,
-            height: 40,
-          ),
-          const Text('Chats'),
-        ],
+      title: const Text(
+        'Messages',
+        style: TextStyle(
+          color: white,
+        ),
       ),
     );
   }
-  
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

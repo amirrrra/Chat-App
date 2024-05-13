@@ -21,7 +21,6 @@ class SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: babyYellow,
       body: AuthenticationBodyWidget(
         title: 'SIGNUP',
         buttonText: 'Signup',

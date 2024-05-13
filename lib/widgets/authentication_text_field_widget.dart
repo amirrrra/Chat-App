@@ -2,11 +2,11 @@ import 'package:chat_app/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class AuthenticationTextFieldWidget extends StatelessWidget {
   final String hintText;
   final void Function(String)? onChanged;
 
-  const TextFieldWidget({
+  const AuthenticationTextFieldWidget({
     super.key,
     required this.hintText,
     this.onChanged,
@@ -29,15 +29,21 @@ class TextFieldWidget extends StatelessWidget {
       },
       onChanged: onChanged,
       selectionControls: CupertinoTextSelectionControls(),
-      cursorColor: black,
+      cursorColor: kSecondryColor,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: const TextStyle(
+          color: grey,
+        ),
         // Don't put textfield into sizedbox since validation change the height
-        contentPadding: const EdgeInsets.all(10),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 16,
+        ),
         border: outlineInputBorder,
         focusedBorder: outlineInputBorder.copyWith(
           borderSide: const BorderSide(
-            color: black,
+            color: kSecondryColor,
           ),
         ),
       ),

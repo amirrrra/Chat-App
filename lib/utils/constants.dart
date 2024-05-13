@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-const black = Colors.black;
+const grey = Colors.grey;
 const white = Colors.white;
-const babyYellow = Color(0xffF6F7C4);
-const babyPink = Color(0xffF6D6D6);
-const blue = Color(0xff355CC6);
-const logo = 'assets/images/online_chat.png';
+const kPrimaryColor = Color(0xff17212B);
+const kSecondryColor = Color(0xff3F96D0);
+const kChatColor = Color(0xff0E1621);
+const kSentMessageColor = Color(0xff182533);
+const kRecievedMessageColor = Color(0xff2B5278);
+
+const logo = 'assets/images/chat.png';
