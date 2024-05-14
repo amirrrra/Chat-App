@@ -29,8 +29,8 @@ class ChatApp extends StatelessWidget {
         scaffoldBackgroundColor: kPrimaryColor,
         fontFamily: 'Gilroy-Medium',
         textTheme: defaultTextTheme.apply(
-          bodyColor: white,
-          displayColor: white,
+          bodyColor: kWhite,
+          displayColor: kWhite,
         ),
       ),
       routes: {
@@ -38,8 +38,8 @@ class ChatApp extends StatelessWidget {
         SignupView.loginRoute: (context) => const LoginView(),
         ChatView.chatRoute: (context) => const ChatView(),
       },
-      home: const LoginView(),
-      // home: const ChatView(),
+      // home: const LoginView(),
+      home: const ChatView(),
     );
   }
 }

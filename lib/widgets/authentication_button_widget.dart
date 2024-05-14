@@ -27,7 +27,7 @@ class AuthenticationButtonWidget extends StatelessWidget {
         text,
         style: const TextStyle(
           fontSize: 20,
-          color: white,
+          color: kWhite,
         ),
       ),
     );

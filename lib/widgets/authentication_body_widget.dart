@@ -42,7 +42,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
             height: 100,
           ),
           Image.asset(
-            logo,
+            kLogo,
             width: 88,
             height: 88,
           ),

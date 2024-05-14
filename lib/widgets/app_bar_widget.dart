@@ -12,7 +12,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       title: const Text(
         'Messages',
         style: TextStyle(
-          color: white,
+          color: kWhite,
         ),
       ),
     );

@@ -33,7 +33,7 @@ class AuthenticationTextFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(
-          color: grey,
+          color: kGrey,
         ),
         // Don't put textfield into sizedbox since validation change the height
         contentPadding: const EdgeInsets.symmetric(
