@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 class ChatTextFieldWidget extends StatelessWidget {
   const ChatTextFieldWidget({super.key});
+  static CollectionReference messageReference =
+      FirebaseFirestore.instance.collection(kMessageCollection);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,6 @@ class ChatTextFieldWidget extends StatelessWidget {
       ),
     );
 
-    CollectionReference messageReference =
-        FirebaseFirestore.instance.collection(kMessageCollection);
     TextEditingController messageController = TextEditingController();
 
     void sendMessage(data) {
