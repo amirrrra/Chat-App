@@ -12,6 +12,7 @@ class ChatBubbleListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.all(16),
       itemCount: itemcount,
       itemBuilder: itemBuilder,
     );

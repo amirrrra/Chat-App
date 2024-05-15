@@ -20,7 +20,8 @@ class ChatTextFieldWidget extends StatelessWidget {
 
     void sendMessage(data) {
       messageReference.add({
-        'message': data,
+        kMessage: data,
+        kTime: DateTime.now(),
       });
       messageController.clear();
     }

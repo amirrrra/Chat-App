@@ -11,6 +11,7 @@ const kRecievedMessageColor = Color(0xff2B5278);
 const kLogo = 'assets/images/chat.png';
 const kMessageCollection = 'messages';
 const kMessage = 'message';
+const kTime = 'time';
 
 
 const kChatRoute = 'Chat View';
