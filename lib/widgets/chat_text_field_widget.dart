@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class ChatTextFieldWidget extends StatelessWidget {
   const ChatTextFieldWidget({super.key});
+
   static CollectionReference messageReference =
       FirebaseFirestore.instance.collection(kMessageCollection);
+  static ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,13 @@ class ChatTextFieldWidget extends StatelessWidget {
         kTime: DateTime.now(),
       });
       messageController.clear();
+      scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: const Duration(
+          milliseconds: 1,
+        ),
+        curve: Curves.easeIn,
+      );
     }
 
     return Padding(
