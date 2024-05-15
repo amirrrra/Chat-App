@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
 
-  static const String loginRoute = 'Login View';
-
   @override
   State<SignupView> createState() => SignupViewState();
 }
@@ -26,7 +24,7 @@ class SignupViewState extends State<SignupView> {
         buttonText: 'Signup',
         suggestionText: 'Log In',
         questionText: "Already have an account? ",
-        routeName: SignupView.loginRoute,
+        routeName: kLoginRoute,
         onPressed: registrationOnPressed,
         onChangedEmail: (data) {
           email = data;

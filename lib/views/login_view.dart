@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
-  static const String signupRoute = 'Signup View';
-
   @override
   State<LoginView> createState() => _LoginViewState();
 }
@@ -26,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
         buttonText: 'Login',
         suggestionText: 'Sign Up',
         questionText: "Don't have an account? ",
-        routeName: LoginView.signupRoute,
+        routeName: kSignupRoute,
         onPressed: loginOnPressed,
         onChangedEmail: (data) {
           email = data;
@@ -54,7 +52,7 @@ class _LoginViewState extends State<LoginView> {
         if (context.mounted) {
           Navigator.pushNamed(
             context,
-            ChatView.chatRoute,
+            kChatRoute,
           );
         }
       } on FirebaseAuthException catch (e) {

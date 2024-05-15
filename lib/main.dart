@@ -1,5 +1,5 @@
+import 'package:chat_app/builders/chat_view_builder.dart';
 import 'package:chat_app/utils/constants.dart';
-import 'package:chat_app/views/chat_view.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/views/signup_view.dart';
 import 'package:flutter/material.dart';
@@ -34,12 +34,12 @@ class ChatApp extends StatelessWidget {
         ),
       ),
       routes: {
-        LoginView.signupRoute: (context) => const SignupView(),
-        SignupView.loginRoute: (context) => const LoginView(),
-        ChatView.chatRoute: (context) => const ChatView(),
+        kSignupRoute: (context) => const SignupView(),
+        kLoginRoute: (context) => const LoginView(),
+        kChatRoute: (context) => const ChatViewBuilder(),
       },
       // home: const LoginView(),
-      home: const ChatView(),
+      home: const ChatViewBuilder(),
     );
   }
 }
