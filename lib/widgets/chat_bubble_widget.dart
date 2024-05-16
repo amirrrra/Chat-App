@@ -4,26 +4,35 @@ import 'package:flutter/material.dart';
 
 class ChatBubbleWidget extends StatelessWidget {
   final MessageModel obj;
+  final Color color;
+  final double bottomLeft;
+  final double bottomRight;
+  final AlignmentGeometry alignment;
+
   const ChatBubbleWidget({
     super.key,
     required this.obj,
+    required this.color,
+    required this.bottomLeft,
+    required this.bottomRight,
+    required this.alignment,
   });
 
   @override
   Widget build(BuildContext context) {
     const bubbleRadius = Radius.circular(32);
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: alignment,
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 4,),
+        margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.all(16),
-        decoration: const BoxDecoration(
-          color: kRecievedMessageColor,
+        decoration: BoxDecoration(
+          color: color,
           borderRadius: BorderRadius.only(
-            topLeft: bubbleRadius,
-            topRight: bubbleRadius,
-            bottomRight: bubbleRadius,
-          ),
+              topLeft: bubbleRadius,
+              topRight: bubbleRadius,
+              bottomRight: Radius.circular(bottomRight),
+              bottomLeft: Radius.circular(bottomLeft)),
         ),
         child: Text(
           obj.message,
@@ -32,6 +41,39 @@ class ChatBubbleWidget extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ChatBubbleSenderWidget extends StatelessWidget {
+  final MessageModel obj;
+
+  const ChatBubbleSenderWidget({super.key, required this.obj});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChatBubbleWidget(
+      obj: obj,
+      color: kSentMessageColor,
+      bottomLeft: 32,
+      bottomRight: 0,
+      alignment: Alignment.centerRight,
+    );
+  }
+}
+class ChatBubbleRecieverWidget extends StatelessWidget {
+  final MessageModel obj;
+
+  const ChatBubbleRecieverWidget({super.key, required this.obj});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChatBubbleWidget(
+      obj: obj,
+      color: kRecievedMessageColor,
+      bottomLeft: 0,
+      bottomRight: 32,
+      alignment: Alignment.centerLeft,
     );
   }
 }

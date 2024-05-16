@@ -30,9 +30,13 @@ class ChatViewBuilder extends StatelessWidget {
           }
           return ChatView(
             itemBuilder: (BuildContext context, int index) {
-              return ChatBubbleWidget(
-                obj: messagesList[index],
-              );
+              return messagesList[index].email == email
+                  ? ChatBubbleSenderWidget(
+                      obj: messagesList[index],
+                    )
+                  : ChatBubbleRecieverWidget(
+                      obj: messagesList[index],
+                    );
             },
             itemcount: messagesList.length,
             email: email,
