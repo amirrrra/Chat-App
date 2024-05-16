@@ -39,7 +39,7 @@ class SignupViewState extends State<SignupView> {
 
   Future<void> userRegistration() async {
     var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+    await auth.createUserWithEmailAndPassword(
       email: email!,
       password: password!,
     );
@@ -53,6 +53,10 @@ class SignupViewState extends State<SignupView> {
           snackbarMessage(
             context,
             'Your account has been created successfully.',
+          );
+          Navigator.pushNamed(
+            context,
+            kLoginRoute,
           );
         }
       } on FirebaseAuthException catch (e) {

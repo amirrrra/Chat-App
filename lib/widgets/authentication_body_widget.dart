@@ -78,6 +78,7 @@ class AuthenticationBodyWidget extends StatelessWidget {
           AuthenticationTextFieldWidget(
             hintText: 'Password',
             onChanged: onChangedPassword,
+            obscureText: true,
           ),
           sizedBox_12,
           AuthenticationButtonWidget(

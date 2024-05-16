@@ -1,15 +1,16 @@
 import 'package:chat_app/utils/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationTextFieldWidget extends StatelessWidget {
   final String hintText;
+  final bool obscureText;
   final void Function(String)? onChanged;
 
   const AuthenticationTextFieldWidget({
     super.key,
     required this.hintText,
     this.onChanged,
+    this.obscureText = false,
   });
 
   @override
@@ -28,7 +29,7 @@ class AuthenticationTextFieldWidget extends StatelessWidget {
         }
       },
       onChanged: onChanged,
-      selectionControls: CupertinoTextSelectionControls(),
+      obscureText: obscureText,
       cursorColor: kSecondryColor,
       decoration: InputDecoration(
         hintText: hintText,

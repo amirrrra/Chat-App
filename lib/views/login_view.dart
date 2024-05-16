@@ -1,6 +1,5 @@
 import 'package:chat_app/helper/snackbar_message.dart';
 import 'package:chat_app/utils/constants.dart';
-import 'package:chat_app/views/chat_view.dart';
 import 'package:chat_app/widgets/authentication_body_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class _LoginViewState extends State<LoginView> {
 
   Future<void> userLogin() async {
     var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await auth.signInWithEmailAndPassword(
+    await auth.signInWithEmailAndPassword(
       email: email!,
       password: password!,
     );
