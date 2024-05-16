@@ -17,9 +17,9 @@ class ChatTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController messageController = TextEditingController();
 
-    void sendMessage(data) {
+    void sendMessage() {
       messageReference.add({
-        kMessage: data,
+        kMessage: messageController.text,
         kTime: DateTime.now(),
         kEmail: email,
       });
@@ -36,7 +36,6 @@ class ChatTextFieldWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: TextField(
-        onSubmitted: sendMessage,
         controller: messageController,
         cursorColor: kSecondryColor,
         decoration: InputDecoration(
@@ -53,7 +52,9 @@ class ChatTextFieldWidget extends StatelessWidget {
             horizontal: 10,
           ),
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              sendMessage();
+            },
             icon: const Icon(
               Icons.send,
               color: kSecondryColor,
