@@ -15,7 +15,9 @@ class ChatViewBuilder extends StatelessWidget {
     // Realtime Changes => StreamBuilder (always listening to data && build)
 
     return StreamBuilder<QuerySnapshot>(
-      stream: ChatTextFieldWidget.messageReference.orderBy(kTime).snapshots(),
+      stream: ChatTextFieldWidget.messageReference
+          .orderBy(kTime, descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<MessageModel> messagesList = [];

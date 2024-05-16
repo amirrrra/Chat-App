@@ -17,3 +17,10 @@ const kTime = 'time';
 const kChatRoute = 'Chat View';
 const kSignupRoute = 'Signup View';
 const kLoginRoute = 'Login View';
+
+const outlineInputBorder = OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.all(
+        Radius.circular(0),
+      ),
+    );

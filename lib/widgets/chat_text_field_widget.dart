@@ -11,12 +11,6 @@ class ChatTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const outlineInputBorder = OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.all(
-        Radius.circular(0),
-      ),
-    );
 
     TextEditingController messageController = TextEditingController();
 
@@ -27,7 +21,7 @@ class ChatTextFieldWidget extends StatelessWidget {
       });
       messageController.clear();
       scrollController.animateTo(
-        scrollController.position.maxScrollExtent,
+        0,
         duration: const Duration(
           milliseconds: 1,
         ),
