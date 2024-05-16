@@ -12,6 +12,7 @@ const kLogo = 'assets/images/chat.png';
 const kMessageCollection = 'messages';
 const kMessage = 'message';
 const kTime = 'time';
+const kEmail = 'email';
 
 
 const kChatRoute = 'Chat View';

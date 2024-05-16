@@ -38,8 +38,8 @@ class ChatApp extends StatelessWidget {
         kLoginRoute: (context) => const LoginView(),
         kChatRoute: (context) => const ChatViewBuilder(),
       },
-      // home: const LoginView(),
-      home: const ChatViewBuilder(),
+      home: const LoginView(),
+      // home: const ChatViewBuilder(),
     );
   }
 }

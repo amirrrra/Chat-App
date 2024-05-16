@@ -53,6 +53,7 @@ class _LoginViewState extends State<LoginView> {
           Navigator.pushNamed(
             context,
             kChatRoute,
+            arguments: email,
           );
         }
       } on FirebaseAuthException catch (e) {

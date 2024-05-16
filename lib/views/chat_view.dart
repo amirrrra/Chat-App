@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 class ChatView extends StatelessWidget {
   final Widget? Function(BuildContext, int) itemBuilder;
   final int itemcount;
+  final String email;
+
   const ChatView({
     super.key,
     required this.itemBuilder,
     required this.itemcount,
+    required this.email,
   });
 
   @override
@@ -26,7 +29,9 @@ class ChatView extends StatelessWidget {
               itemcount: itemcount,
             ),
           ),
-          const ChatTextFieldWidget(),
+          ChatTextFieldWidget(
+            email: email,
+          ),
         ],
       ),
     );

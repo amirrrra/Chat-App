@@ -3,7 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ChatTextFieldWidget extends StatelessWidget {
-  const ChatTextFieldWidget({super.key});
+  final String email;
+  const ChatTextFieldWidget({
+    super.key,
+    required this.email,
+  });
 
   static CollectionReference messageReference =
       FirebaseFirestore.instance.collection(kMessageCollection);
@@ -11,13 +15,13 @@ class ChatTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     TextEditingController messageController = TextEditingController();
 
     void sendMessage(data) {
       messageReference.add({
         kMessage: data,
         kTime: DateTime.now(),
+        kEmail: email,
       });
       messageController.clear();
       scrollController.animateTo(

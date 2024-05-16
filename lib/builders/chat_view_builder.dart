@@ -11,9 +11,11 @@ class ChatViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Here we access the arguments sent with the pushnamed
+    String email = ModalRoute.of(context)!.settings.arguments as String;
+
     // One-time Read => FutureBuilder (listens to data only once then build)
     // Realtime Changes => StreamBuilder (always listening to data && build)
-
     return StreamBuilder<QuerySnapshot>(
       stream: ChatTextFieldWidget.messageReference
           .orderBy(kTime, descending: true)
@@ -33,6 +35,7 @@ class ChatViewBuilder extends StatelessWidget {
               );
             },
             itemcount: messagesList.length,
+            email: email,
           );
         } else {
           return const Center(
