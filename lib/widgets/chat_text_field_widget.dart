@@ -1,6 +1,7 @@
+import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:chat_app/utils/constants.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatTextFieldWidget extends StatelessWidget {
   final String email;
@@ -9,8 +10,6 @@ class ChatTextFieldWidget extends StatelessWidget {
     required this.email,
   });
 
-  static CollectionReference messageReference =
-      FirebaseFirestore.instance.collection(kMessageCollection);
   static ScrollController scrollController = ScrollController();
 
   @override
@@ -18,11 +17,10 @@ class ChatTextFieldWidget extends StatelessWidget {
     TextEditingController messageController = TextEditingController();
 
     void sendMessage() {
-      messageReference.add({
-        kMessage: messageController.text,
-        kTime: DateTime.now(),
-        kEmail: email,
-      });
+      BlocProvider.of<ChatCubit>(context).sendMessages(
+        message: messageController.text,
+        email: email,
+      );
       messageController.clear();
       scrollController.animateTo(
         0,

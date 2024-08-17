@@ -1,84 +1,69 @@
+import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
+import 'package:chat_app/cubits/login_cubit/login_cubit.dart';
+import 'package:chat_app/cubits/login_cubit/login_state.dart';
 import 'package:chat_app/helper/snackbar_message.dart';
 import 'package:chat_app/utils/constants.dart';
 import 'package:chat_app/widgets/authentication_body_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  GlobalKey<FormState> formKey = GlobalKey();
-  String? email;
-  String? password;
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AuthenticationBodyWidget(
-        title: 'LOGIN',
-        buttonText: 'Login',
-        suggestionText: 'Sign Up',
-        questionText: "Don't have an account? ",
-        routeName: kSignupRoute,
-        onPressed: loginOnPressed,
-        onChangedEmail: (data) {
-          email = data;
-        },
-        onChangedPassword: (data) {
-          password = data;
-        },
-        formKey: formKey,
-      ),
-    );
-  }
+    GlobalKey<FormState> formKey = GlobalKey();
+    String? email;
+    String? password;
 
-  Future<void> userLogin() async {
-    var auth = FirebaseAuth.instance;
-    await auth.signInWithEmailAndPassword(
-      email: email!,
-      password: password!,
-    );
-  }
+    Future<void> loginOnPressed() async {
+      if (formKey.currentState!.validate()) {
+        await BlocProvider.of<LoginCubit>(context).login(
+          email: email!,
+          password: password!,
+        );
+      }
+    }
 
-  Future<void> loginOnPressed() async {
-    if (formKey.currentState!.validate()) {
-      try {
-        await userLogin();
-        if (context.mounted) {
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if (state is SuccessLoginState) {
           Navigator.pushNamed(
             context,
             kChatRoute,
             arguments: email,
           );
-        }
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'wrong-password') {
-          if (context.mounted) {
-            snackbarMessage(
-              context,
-              'Wrong Password',
-            );
-          }
-        } else if (e.code == 'user-not-found') {
-          if (context.mounted) {
-            snackbarMessage(
-              context,
-              'User not found',
-            );
-          }
-        }
-      } catch (e) {
-        if (context.mounted) {
+          BlocProvider.of<ChatCubit>(context).getMessages();
+        } else if (state is FailureLoginState) {
           snackbarMessage(
             context,
-            'There is an error ,try later',
+            state.errorMessage,
           );
         }
-      }
-    }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          body: state is LoadingLoginState
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : AuthenticationBodyWidget(
+                  title: 'LOGIN',
+                  buttonText: 'Login',
+                  suggestionText: 'Sign Up',
+                  questionText: "Don't have an account? ",
+                  routeName: kSignupRoute,
+                  onPressed: loginOnPressed,
+                  onChangedEmail: (data) {
+                    email = data;
+                  },
+                  onChangedPassword: (data) {
+                    password = data;
+                  },
+                  formKey: formKey,
+                ),
+        );
+      },
+    );
   }
 }

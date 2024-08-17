@@ -1,9 +1,13 @@
-import 'package:chat_app/builders/chat_view_builder.dart';
+import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
+import 'package:chat_app/cubits/login_cubit/login_cubit.dart';
+import 'package:chat_app/cubits/signup_cubit/signup_cubit.dart';
 import 'package:chat_app/utils/constants.dart';
+import 'package:chat_app/views/chat_view.dart';
 import 'package:chat_app/views/login_view.dart';
 import 'package:chat_app/views/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -23,23 +27,30 @@ class ChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var defaultTextTheme = Theme.of(context).textTheme;
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: kPrimaryColor,
-        fontFamily: 'Gilroy-Medium',
-        textTheme: defaultTextTheme.apply(
-          bodyColor: kWhite,
-          displayColor: kWhite,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => SignupCubit()),
+        BlocProvider(create: (context) => ChatCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: kPrimaryColor,
+          fontFamily: 'Gilroy-Medium',
+          textTheme: defaultTextTheme.apply(
+            bodyColor: kWhite,
+            displayColor: kWhite,
+          ),
         ),
+        routes: {
+          kSignupRoute: (context) => const SignupView(),
+          kLoginRoute: (context) => const LoginView(),
+          kChatRoute: (context) => const ChatView(),
+        },
+        home: const LoginView(),
+        // home: const ChatViewBuilder(),
       ),
-      routes: {
-        kSignupRoute: (context) => const SignupView(),
-        kLoginRoute: (context) => const LoginView(),
-        kChatRoute: (context) => const ChatViewBuilder(),
-      },
-      home: const LoginView(),
-      // home: const ChatViewBuilder(),
     );
   }
 }

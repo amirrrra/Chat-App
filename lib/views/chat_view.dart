@@ -5,19 +5,14 @@ import 'package:chat_app/widgets/chat_text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatView extends StatelessWidget {
-  final Widget? Function(BuildContext, int) itemBuilder;
-  final int itemcount;
-  final String email;
-
   const ChatView({
     super.key,
-    required this.itemBuilder,
-    required this.itemcount,
-    required this.email,
   });
 
   @override
   Widget build(BuildContext context) {
+    String email = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       backgroundColor: kChatColor,
       appBar: const AppBarWidget(),
@@ -25,8 +20,7 @@ class ChatView extends StatelessWidget {
         children: [
           Expanded(
             child: ChatBubbleListWidget(
-              itemBuilder: itemBuilder,
-              itemcount: itemcount,
+              email: email,
             ),
           ),
           ChatTextFieldWidget(
