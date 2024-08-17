@@ -7,8 +7,8 @@ import 'package:chat_app/widgets/authentication_body_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginCubitView extends StatelessWidget {
+  const LoginCubitView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class LoginView extends StatelessWidget {
         if (state is SuccessLoginState) {
           Navigator.pushNamed(
             context,
-            kChatRoute,
+            kChatCubitRoute,
             arguments: email,
           );
           BlocProvider.of<ChatCubit>(context).getMessages();
@@ -52,7 +52,7 @@ class LoginView extends StatelessWidget {
                   buttonText: 'Login',
                   suggestionText: 'Sign Up',
                   questionText: "Don't have an account? ",
-                  routeName: kSignupRoute,
+                  routeName: kSignupCubitRoute,
                   onPressed: loginOnPressed,
                   onChangedEmail: (data) {
                     email = data;

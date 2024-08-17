@@ -6,8 +6,8 @@ import 'package:chat_app/widgets/authentication_body_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignupView extends StatelessWidget {
-  const SignupView({super.key});
+class SignupCubitView extends StatelessWidget {
+  const SignupCubitView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class SignupView extends StatelessWidget {
           );
           Navigator.pushNamed(
             context,
-            kLoginRoute,
+            kLoginCubitRoute,
           );
         } else if (state is FailureSignupState) {
           snackbarMessage(context, state.errorMessage);
@@ -46,7 +46,7 @@ class SignupView extends StatelessWidget {
             buttonText: 'Signup',
             suggestionText: 'Log In',
             questionText: "Already have an account? ",
-            routeName: kLoginRoute,
+            routeName: kLoginCubitRoute,
             onPressed: registrationOnPressed,
             onChangedEmail: (data) {
               email = data;

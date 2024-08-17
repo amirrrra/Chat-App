@@ -1,9 +1,14 @@
+import 'package:chat_app/blocs/auth_bloc/auth_bloc.dart';
+import 'package:chat_app/blocs/chat_bloc/chat_bloc.dart';
 import 'package:chat_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
 import 'package:chat_app/utils/constants.dart';
-import 'package:chat_app/views/chat_view.dart';
-import 'package:chat_app/views/login_view.dart';
-import 'package:chat_app/views/signup_view.dart';
+import 'package:chat_app/views/cubit_views/chat_view_cubit.dart';
+import 'package:chat_app/views/bloc_views/chat_view_bloc.dart';
+import 'package:chat_app/views/cubit_views/login_view_cubit.dart';
+import 'package:chat_app/views/bloc_views/login_view_bloc.dart';
+import 'package:chat_app/views/cubit_views/signup_view_cubit.dart';
+import 'package:chat_app/views/bloc_views/signup_view_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +35,8 @@ class ChatApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => ChatCubit()),
+        BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context) => ChatBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -42,12 +49,15 @@ class ChatApp extends StatelessWidget {
           ),
         ),
         routes: {
-          kSignupRoute: (context) => const SignupView(),
-          kLoginRoute: (context) => const LoginView(),
-          kChatRoute: (context) => const ChatView(),
+          kSignupCubitRoute: (context) => const SignupCubitView(),
+          kLoginCubitRoute: (context) => const LoginCubitView(),
+          kChatCubitRoute: (context) => const ChatViewCubit(),
+          kSignupBlocRoute: (context) => const SignupBlocView(),
+          kLoginBlocRoute: (context) => const LoginBlocView(),
+          kChatBlocRoute: (context) => const ChatViewBloc(),
         },
-        home: const LoginView(),
-        // home: const ChatViewBuilder(),
+        initialRoute: kLoginBlocRoute,
+        // initialRoute: kLoginCubitRoute,
       ),
     );
   }

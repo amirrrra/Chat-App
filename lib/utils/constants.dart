@@ -14,9 +14,13 @@ const kMessage = 'message';
 const kTime = 'time';
 const kEmail = 'email';
 
-const kChatRoute = 'Chat View';
-const kSignupRoute = 'Signup View';
-const kLoginRoute = 'Login View';
+const kChatCubitRoute = 'Chat Cubit View';
+const kSignupCubitRoute = 'Signup Cubit View';
+const kLoginCubitRoute = 'Login Cubit View';
+
+const kLoginBlocRoute = 'Login Bloc View';
+const kSignupBlocRoute = 'Signup Bloc View';
+const kChatBlocRoute = 'Chat Bloc View';
 
 const outlineInputBorder = OutlineInputBorder(
   borderSide: BorderSide.none,

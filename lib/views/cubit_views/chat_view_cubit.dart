@@ -1,11 +1,11 @@
 import 'package:chat_app/utils/constants.dart';
 import 'package:chat_app/widgets/app_bar_widget.dart';
-import 'package:chat_app/widgets/chat_bubble_list_widget.dart';
-import 'package:chat_app/widgets/chat_text_field_widget.dart';
+import 'package:chat_app/widgets/cubit_widgets/chat_bubble_list_widget_cubit.dart';
+import 'package:chat_app/widgets/cubit_widgets/chat_text_field_widget_cubit.dart';
 import 'package:flutter/material.dart';
 
-class ChatView extends StatelessWidget {
-  const ChatView({
+class ChatViewCubit extends StatelessWidget {
+  const ChatViewCubit({
     super.key,
   });
 
@@ -23,7 +23,7 @@ class ChatView extends StatelessWidget {
               email: email,
             ),
           ),
-          ChatTextFieldWidget(
+          ChatTextFieldWidgetCubit(
             email: email,
           ),
         ],
