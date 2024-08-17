@@ -1,5 +1,5 @@
-import 'package:chat_app/cubits/signup_cubit/signup_cubit.dart';
-import 'package:chat_app/cubits/signup_cubit/signup_state.dart';
+import 'package:chat_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:chat_app/cubits/auth_cubit/auth_state.dart';
 import 'package:chat_app/helper/snackbar_message.dart';
 import 'package:chat_app/utils/constants.dart';
 import 'package:chat_app/widgets/authentication_body_widget.dart';
@@ -17,14 +17,14 @@ class SignupView extends StatelessWidget {
 
     Future<void> registrationOnPressed() async {
       if (formKey.currentState!.validate()) {
-        BlocProvider.of<SignupCubit>(context).signup(
+        BlocProvider.of<AuthCubit>(context).signup(
           email: email!,
           password: password!,
         );
       }
     }
 
-    return BlocConsumer<SignupCubit, SignupState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SuccessSignupState) {
           snackbarMessage(

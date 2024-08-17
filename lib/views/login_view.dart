@@ -1,6 +1,6 @@
+import 'package:chat_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:chat_app/cubits/auth_cubit/auth_state.dart';
 import 'package:chat_app/cubits/chat_cubit/chat_cubit.dart';
-import 'package:chat_app/cubits/login_cubit/login_cubit.dart';
-import 'package:chat_app/cubits/login_cubit/login_state.dart';
 import 'package:chat_app/helper/snackbar_message.dart';
 import 'package:chat_app/utils/constants.dart';
 import 'package:chat_app/widgets/authentication_body_widget.dart';
@@ -18,14 +18,14 @@ class LoginView extends StatelessWidget {
 
     Future<void> loginOnPressed() async {
       if (formKey.currentState!.validate()) {
-        await BlocProvider.of<LoginCubit>(context).login(
+        await BlocProvider.of<AuthCubit>(context).login(
           email: email!,
           password: password!,
         );
       }
     }
 
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SuccessLoginState) {
           Navigator.pushNamed(
